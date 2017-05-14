@@ -4,11 +4,23 @@
    Author's custom styles
    ========================================================================== */
 
+/*  For HTML styling
+input:required:valid {
+  border: 2px solid green;
+}
 
+input:required:invalid, input:focus:invalid {
+  border: 2px solid red;
+}
 
+#yourname:required:valid {
+  border: 2px solid green;
+}
+*/
 
-
-
+.error {
+  color: red;
+}
 
 
 

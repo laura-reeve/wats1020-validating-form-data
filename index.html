@@ -56,9 +56,6 @@
             <div class="col-sm-9">
               <input type="text" class="form-control" name="your-address" id="your-address" placeholder="Your Street Address">
             </div>
-            <!-- TODO: Make validation for street address according to these rules:
-                  * Field must not be blank
-                  -->
           </div>
           <div class="form-group">
             <label class="col-sm-3 control-label" for="your-address2">Street Address (additional)</label>
@@ -71,9 +68,6 @@
             <div class="col-sm-9">
               <input type="text" class="form-control" name="your-city" id="your-city" placeholder="Your City">
             </div>
-            <!-- TODO: Make validation for city according to these rules:
-                  * Field must not be blank
-                  -->
           </div>
           <div class="form-group required">
             <label class="col-sm-3 control-label" for="your-state"><span class="glyphicon glyphicon-question-sign" title="Two-letter state abbreviation."></span> State</label>
@@ -101,7 +95,7 @@
         <fieldset>
           <legend>Payment</legend>
           <div class="form-group required">
-            <label class="col-sm-3 control-label" for="card-holder-name"><span class="glyphicon glyphicon-question-sign" title="First and last name shown on card."></span> Name on Card</label>
+            <label class="col-sm-3 control-label" for="card-holder-name"><span class="glyphicon glyphicon-question-sign" title="Full name shown on card."></span> Name on Card</label>
             <div class="col-sm-9">
               <input type="text" class="form-control" name="card-holder-name" id="card-holder-name" placeholder="Card Holder's Name">
             </div>
@@ -111,7 +105,7 @@
                   -->
           </div>
           <div class="form-group required">
-            <label class="col-sm-3 control-label" for="card-number"><span class="glyphicon glyphicon-question-sign" title="Test card number: 0000 0000 0000 0000"></span> Card Number</label>
+            <label class="col-sm-3 control-label" for="card-number"><span class="glyphicon glyphicon-question-sign" title="Use hyphens or spaces."></span> Card Number</label>
             <div class="col-sm-9">
               <input type="text" class="form-control" name="card-number" id="card-number" placeholder="Debit/Credit Card Number">
             </div>
@@ -130,7 +124,7 @@
               <div class="row">
                 <div class="col-xs-3">
                   <select class="form-control col-sm-2" name="expiry-month" id="expiry-month">
-                    <option>Month</option>
+                    <option value="none">Month</option>
                     <option value="01">Jan (01)</option>
                     <option value="02">Feb (02)</option>
                     <option value="03">Mar (03)</option>
@@ -146,9 +140,7 @@
                   </select>
                 </div>
                 <div class="col-xs-3">
-                  <select class="form-control" name="expiry-year">
-                    <option value="15">2015</option>
-                    <option value="16">2016</option>
+                  <select class="form-control" name="expiry-year" id="expiry-year">
                     <option value="17">2017</option>
                     <option value="18">2018</option>
                     <option value="19">2019</option>
@@ -184,7 +176,7 @@
               <div class="row">
                 <div class="col-xs-3">
                   <select class="form-control col-sm-2" name="shipping-method" id="shipping-method">
-                    <option>Select One</option>
+                    <option value="none">Select One</option>
                     <option value="Ground">Ground</option>
                     <option value="Air">Air</option>
                     <option value="Sea">Sea</option>
@@ -221,14 +213,33 @@
       <hr>
 
       <footer>
-        <p>&copy; Jane Student 2015</p>
+        <p>&copy; Laura Reeve 2017</p>
       </footer>
     </div> <!-- /container -->        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
 
         <script src="js/vendor/bootstrap.min.js"></script>
         <script src="js/vendor/jquery.validate.min.js"></script>
-
+        <script src="https://ajax.microsoft.com/ajax/jquery.validate/1.7/additional-methods.js"></script> 
+        <script>
+            // alphabet with spaces and periods allowed
+            $.validator.addMethod("alpha", function(value, element) {
+              return this.optional(element) || value == value.match(/^[a-zA-Z .]+$/);
+            });
+            // digits with hyphens and spaces allowed
+            $.validator.addMethod("numbers", function(value, element) {
+              return this.optional(element) || value == value.match(/^[0-9 -]+$/);
+            });
+            // drop down selection with value = "none" throws error
+            $.validator.addMethod("dropDownVal",
+            function(value, "select") {
+              if (value == "none")
+                return false;
+              else
+                return true;
+            },
+            "Please select a value");
+        </script>
         <script src="js/main.js"></script>
     </body>
 </html>
