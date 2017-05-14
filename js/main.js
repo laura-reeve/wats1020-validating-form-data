@@ -2,13 +2,33 @@
 
 // Create a document ready handler.
 $(document).ready( function() {  
-  $("#order-form").validate( {  
-// Define a validation object for use on your page.
+  
+  // Custom functions
+  // Alphabet with spaces and periods allowed
+    $.validator.addMethod("alpha", function(value, element) {
+      return this.optional(element) || value == value.match(/^[a-zA-Z .]+$/);
+    });
+  // Digits with hyphens and spaces allowed
+    $.validator.addMethod("numbers", function(value, element) {
+      return this.optional(element) || value == value.match(/^[0-9 -]+$/);
+    });
+  // Drop down selection with value = "none" throws error
+    $.validator.addMethod("dropDownVal",
+      function(value, select) {
+        if (value == "none")
+          return false;
+        else
+          return true;
+    }, "Please select a value");
+  
+// If the form is valid, then submit  
+  
+  $("#order-form").validate( { 
     submitHandler: function(form) {
-// Connect the validation object to an event handler tied to the submit button.
-      form.submit();
       showErrors();
+      form.submit();
     },
+    
 // Refer to the `index.html` file for the validation rules that must be enforced.
     rules: {
       "your-name": {

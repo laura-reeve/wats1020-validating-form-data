@@ -38,7 +38,7 @@
     <div class="container">
       <p class="lead">Please note: This form is only for validation demonstration purposes. Do not enter real payment information; please use imaginary data.</p>
       <form class="form-horizontal" role="form" action="thank-you.html" method="get" id="order-form">
-      <!-- TODO: Add a general validation check so that any field contained in a `div.form-group. required` will be required to have information when the user submits the form. -->
+      <!-- Add a general validation check so that any field contained in a `div.form-group. required` will be required to have information when the user submits the form. -->
         <fieldset>
           <legend>Your Information</legend>
           <div class="form-group required">
@@ -46,7 +46,7 @@
             <div class="col-sm-9">
               <input type="text" class="form-control" name="your-name" id="your-name" placeholder="Your Name">
             </div>
-            <!-- TODO: Make validation for name according to these rules:
+            <!-- Make validation for name according to these rules:
                  * Name must be fewer than 128 characters.
                  * Name may not contain any numbers.
                  -->
@@ -74,7 +74,7 @@
             <div class="col-sm-9">
               <input type="text" class="form-control" name="your-state" id="your-state" placeholder="Your State">
             </div>
-            <!-- TODO: Make validation for state according to these rules:
+            <!-- Make validation for state according to these rules:
                   * Field must not be blank
                   * Field must contain exactly two letters
                   * (Stretch Goal: If possible, verify that the 2-letter combo matches with known state abbreviations.)
@@ -85,7 +85,7 @@
             <div class="col-sm-9">
               <input type="text" class="form-control" name="your-zip" id="your-zip" placeholder="Your ZIP Code">
             </div>
-            <!-- TODO: Make validation for ZIP according to these rules:
+            <!-- Make validation for ZIP according to these rules:
                   * Field must not be blank
                   * Field must be an integer (only whole numbers)
                   * Field must have 5 digits
@@ -99,7 +99,7 @@
             <div class="col-sm-9">
               <input type="text" class="form-control" name="card-holder-name" id="card-holder-name" placeholder="Card Holder's Name">
             </div>
-            <!-- TODO: Make validation for name on card according to these rules:
+            <!-- Make validation for name on card according to these rules:
                   * Field must not be blank
                   * Field must conform to same name requirements as above.
                   -->
@@ -109,7 +109,7 @@
             <div class="col-sm-9">
               <input type="text" class="form-control" name="card-number" id="card-number" placeholder="Debit/Credit Card Number">
             </div>
-            <!-- TODO: Make validation for card number according to these rules:
+            <!-- Make validation for card number according to these rules:
                   * Field must not be blank
                   * Field must contain only numbers and spaces (no other characters)
                   * Field must contain 16 digits
@@ -152,7 +152,7 @@
                 </div>
               </div>
             </div>
-            <!-- TODO: Make validation for Expiration Date according to these rules:
+            <!-- Make validation for Expiration Date according to these rules:
                   * Fields must not be blank
                   -->
           </div>
@@ -161,7 +161,7 @@
             <div class="col-sm-3">
               <input type="text" class="form-control" name="cvv" id="cvv" placeholder="Security Code">
             </div>
-            <!-- TODO: Make validation for CVV according to these rules:
+            <!-- Make validation for CVV according to these rules:
                   * Field must not be blank
                   * Field must only contain numbers
                   * Field must have 3 digits
@@ -186,7 +186,7 @@
                 </div>
               </div>
             </div>
-            <!-- TODO: Make validation for shipping method according to these rules:
+            <!-- Make validation for shipping method according to these rules:
                   * Field must not be blank
                   -->
           </div>
@@ -195,7 +195,7 @@
             <div class="col-sm-9">
               <textarea cols="80" rows="8" class="form-control" name="comments" id="comments" placeholder="Comments"></textarea>
             </div>
-            <!-- TODO: Make validation for street address according to these rules:
+            <!-- Make validation for street address according to these rules:
                   * Field may be blank
                   * If field is not blank, it must be less than 500 characters.
                   * Field may contain any characters
@@ -221,25 +221,9 @@
         <script src="js/vendor/bootstrap.min.js"></script>
         <script src="js/vendor/jquery.validate.min.js"></script>
         <script src="https://ajax.microsoft.com/ajax/jquery.validate/1.7/additional-methods.js"></script> 
-        <script>
-            // alphabet with spaces and periods allowed
-            $.validator.addMethod("alpha", function(value, element) {
-              return this.optional(element) || value == value.match(/^[a-zA-Z .]+$/);
-            });
-            // digits with hyphens and spaces allowed
-            $.validator.addMethod("numbers", function(value, element) {
-              return this.optional(element) || value == value.match(/^[0-9 -]+$/);
-            });
-            // drop down selection with value = "none" throws error
-            $.validator.addMethod("dropDownVal",
-            function(value, "select") {
-              if (value == "none")
-                return false;
-              else
-                return true;
-            },
-            "Please select a value");
-        </script>
         <script src="js/main.js"></script>
+        <script>
+            
+        </script>
     </body>
 </html>
