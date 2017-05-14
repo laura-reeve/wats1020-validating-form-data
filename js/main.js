@@ -89,6 +89,9 @@ $(document).ready( function() {
       "your-name": {
         alpha: "Please enter only letters, periods or spaces."
       },
+      "your-city": {
+        alpha: "Please enter only letters, periods or spaces."
+      },
       "card-holder-name": {
         alpha: "Please enter only letters, periods or spaces."
       },
